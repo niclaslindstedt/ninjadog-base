@@ -25,3 +25,4 @@ plugins
 loadedTorrents
 .vscode
 plugins.json
+package-lock.json
