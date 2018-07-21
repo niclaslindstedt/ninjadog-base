@@ -7,7 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joachim Lindström",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lindstrm/ninjakatt.git"
+  },
+  "homepage": "https://github.com/lindstrm/ninjakatt",
+  "bugs": {
+    "url": "https://github.com/lindstrm/ninjakatt/issues"
+  },
   "license": "ISC",
   "dependencies": {
     "cat-ascii-faces": "^2.0.0",
