@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const path = require('path');
 const cats = require('cat-ascii-faces');
 const pkg = require('./package.json');
