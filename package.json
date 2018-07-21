@@ -11,15 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "cat-ascii-faces": "^2.0.0",
-    "fs-extra": "^6.0.1",
-    "ninjakatt-plugin-debugger": "file:./plugins/debugger",
-    "ninjakatt-plugin-files": "file:./plugins/files",
-    "ninjakatt-plugin-qbittorrent": "file:./plugins/qbittorrent",
-    "ninjakatt-plugin-torrentleech": "file:./plugins/torrentleech",
-    "ninjakatt-plugin-torrentrss": "file:./plugins/torrentrss",
-    "ninjakatt-plugin-webserver": "file:./plugins/webserver",
-    "ninjakatt-plugin-epcheckr": "file:./plugins/epcheckr",
-    "ninjakatt-plugin-kodi": "file:./plugins/kodi"
+    "fs-extra": "^6.0.1"
   },
   "description": ""
 }
