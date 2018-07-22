@@ -1,9 +1,13 @@
-const pkg = require('../package.json');
 const fs = require('fs-extra');
+const util = require('util');
+const path = require('path');
+const EventEmitter = require('events');
 
-module.exports = class PluginService {
+module.exports = class PluginService extends EventEmitter {
   constructor() {
+    super();
     this._installed = {};
+    this._uninstalled = {};
 
     const userSettingsFile = `${global.appRoot}/plugins.json`;
     fs.ensureFile(userSettingsFile, error => {
@@ -24,14 +28,32 @@ module.exports = class PluginService {
     return this._installed.hasOwnProperty(pluginName);
   }
 
-  loadPlugins() {
-    Object.keys(pkg.dependencies).forEach(key => {
-      if (!key.match(/ninjakatt\-plugin/)) {
-        return;
-      }
-      const plugin = require(key);
-      this.install(plugin);
+  async loadPlugins() {
+    const plugins = await this.getPlugins();
+    plugins.forEach(name => {
+      const plugin = require(path.resolve(global.appRoot, '..', name));
+      this._uninstalled[plugin.name] = plugin;
     });
+
+    this.emit('plugins.loaded', this._uninstalled);
+  }
+
+  getPlugins() {
+    return new Promise((resolve, reject) => {
+      let plugins = fs.readdirSync(path.resolve(global.appRoot, '..'));
+      plugins = plugins.filter(
+        pkg => pkg.match(/ninjakatt-plugin-/) && !pkg.match('base')
+      );
+
+      return resolve(plugins);
+    });
+  }
+
+  installLoadedPlugins() {
+    Object.keys(this._uninstalled).forEach(plugin => {
+      this.install(this._uninstalled[plugin]);
+    });
+    this.emit('plugins.installed', this._installed);
   }
 
   install(Plugin) {
@@ -47,5 +69,6 @@ module.exports = class PluginService {
 
     instance.setup();
     this._installed[Plugin.name] = instance;
+    delete this._uninstalled[Plugin.name];
   }
 };
