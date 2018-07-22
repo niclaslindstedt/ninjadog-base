@@ -1,6 +1,6 @@
 {
   "name": "ninjakatt",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "module": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +18,8 @@
   "license": "ISC",
   "dependencies": {
     "cat-ascii-faces": "^2.0.0",
-    "fs-extra": "^6.0.1"
+    "fs-extra": "^6.0.1",
+    "minimist": "^1.2.0"
   },
   "description": "",
   "bin": {
