@@ -16,9 +16,15 @@ npm install -g ninjakatt
 ninjakatt
 ```
 
+# Restarting
+
+Simply press CTRL+C and start ninjakatt again if you're running it through a command prompt.
+
+If you are running ninjakatt as a service, you need to open the Task Manager, go to the Services tab, and right-click `ninjakatt.exe` and choose *Restart*.
+
 # Installing service
 
-To install Ninjakatt as a service, run:
+To install ninjakatt as a service, run:
 
 ```
 ninjakatt service install
@@ -42,9 +48,11 @@ Then run the uninstall command above.
 
 # Configuration
 
-The Ninjakatt configuration is stored in `%USERPROFILE%/AppData/Roaming/ninjakatt/settings.json`
+The ninjakatt configuration is stored in `%USERPROFILE%/AppData/Roaming/ninjakatt/settings.json`
 
 You might want to install some ninjakatt plugins before editing this file and running the program.
+
+You need to restart the program after changing the settings.
 
 # Plugins
 
@@ -53,6 +61,8 @@ Install a plugin just like you installed ninjakatt:
 ```
 npm install -g <plugin name>
 ```
+
+You need to restart the program after installing a plugin.
 
 Name | Description
 --- | ---
@@ -66,3 +76,4 @@ Name | Description
 [ninjakatt-plugin-epcheckr](https://github.com/lindstrm/ninjakatt-plugin-epcheckr) | API for epcheckr
 
 \* Is installed by installing ninjakatt
+
