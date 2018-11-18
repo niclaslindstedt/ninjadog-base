@@ -57,7 +57,7 @@ npm install -g <plugin name>
 Name | Description
 --- | ---
 [ninjakatt-plugin-base](https://github.com/lindstrm/ninjakatt-plugin-base) | The base system\*
-[ninjakatt-plugin-files](https://github.com/lindstrm/ninjakatt-plugin-files) | Write and read files
+[ninjakatt-plugin-files](https://github.com/lindstrm/ninjakatt-plugin-files) | Watch file system for changes and trigger events
 [ninjakatt-plugin-logger](https://github.com/lindstrm/ninjakatt-plugin-logger) | Log events
 [ninjakatt-plugin-webserver](https://github.com/lindstrm/ninjakatt-plugin-webserver) | Allows access to ninjakatt through a web browser
 [ninjakatt-plugin-kodi](https://github.com/lindstrm/ninjakatt-plugin-kodi) | API for Kodi
