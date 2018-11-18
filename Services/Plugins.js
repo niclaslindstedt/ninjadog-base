@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
-const util = require('util');
 const path = require('path');
 const EventEmitter = require('events');
+const BasePlugin = require('./Plugins.base');
 
 module.exports = class PluginService extends EventEmitter {
   constructor() {
@@ -32,9 +32,9 @@ module.exports = class PluginService extends EventEmitter {
     const plugins = await this.getPlugins();
     plugins.forEach(name => {
       const plugin = require(path.resolve(global.appRoot, '..', name));
+      Object.appendChain(plugin.prototype, new BasePlugin());
       this._uninstalled[plugin.name] = plugin;
     });
-
     this.emit('plugins.loaded', this._uninstalled);
   }
 
@@ -60,7 +60,6 @@ module.exports = class PluginService extends EventEmitter {
     if (typeof Plugin === 'object') {
       return;
     }
-
     const instance = new Plugin();
 
     if (instance.installable === false) {
@@ -68,6 +67,7 @@ module.exports = class PluginService extends EventEmitter {
     }
 
     instance.setup();
+
     this._installed[Plugin.name] = instance;
     delete this._uninstalled[Plugin.name];
   }

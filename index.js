@@ -6,6 +6,8 @@ const args = require('minimist')(process.argv.slice(2))._;
 const command = args[0];
 const subcommand = args[1];
 
+require('./lib/extensions');
+
 const exec = require('child_process').exec;
 
 global.appRoot = path.resolve(__dirname);
