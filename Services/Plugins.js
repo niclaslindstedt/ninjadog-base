@@ -9,7 +9,7 @@ module.exports = class PluginService extends EventEmitter {
     this._installed = {};
     this._uninstalled = {};
 
-    const userSettingsFile = `${global.appRoot}/plugins.json`;
+    const userSettingsFile = global.settings;
     fs.ensureFile(userSettingsFile, error => {
       const settings = fs.readFileSync(userSettingsFile).toString();
       if (settings === '') {
