@@ -66,7 +66,6 @@ You need to restart the program after installing a plugin.
 
 Name | Description
 --- | ---
-[ninjakatt-plugin-base](https://github.com/lindstrm/ninjakatt-plugin-base) | The base system\*
 [ninjakatt-plugin-files](https://github.com/lindstrm/ninjakatt-plugin-files) | Watch file system for changes and trigger events
 [ninjakatt-plugin-logger](https://github.com/lindstrm/ninjakatt-plugin-logger) | Log events
 [ninjakatt-plugin-webserver](https://github.com/lindstrm/ninjakatt-plugin-webserver) | Allows access to ninjakatt through a web browser
