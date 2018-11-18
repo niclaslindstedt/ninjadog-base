@@ -77,3 +77,35 @@ Name | Description
 
 \* Is installed by installing ninjakatt
 
+# Typical use case
+
+You want ninjakatt to:
+
+* Download torrents through an RSS feed
+* Monitor a folder on your harddrive for torrent files (recursively) and add them to qBitTorrent when found
+* Be served through the web
+* Log events
+
+To do this, run the following:
+
+```
+npm install -g ninjakatt
+npm install -g ninjakatt-plugin-torrentrss
+npm install -g ninjakatt-plugin-qbittorrent
+npm install -g ninjakatt-plugin-webserver
+npm install -g ninjakatt-plugin-logger
+```
+
+Then edit your settings.json file (with [VS Code](https://code.visualstudio.com/)):
+
+```
+code %USERPROFILE%/AppData/Roaming/ninjakatt/settings.json
+```
+
+Then install ninjakatt as a service:
+
+```
+ninjakatt service install
+```
+
+Et voilà!
