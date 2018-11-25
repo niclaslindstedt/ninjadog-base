@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+const path = require('path');
 module.exports = class Base {
   construct(path) {
     this.path = path;
@@ -16,8 +17,8 @@ module.exports = class Base {
   loadSettings() {
     try {
       const userSettingsFile = global.settings;
-      const user = fs.readJsonSync(userSettingsFile);
-      const defaults = fs.readJsonSync(`${this.path}/settings.default.json`);
+      const user = this.readFile(userSettingsFile);
+      const defaults = this.readFile(`${this.path}/settings.default.json`);
       if (user.hasOwnProperty(this.name)) {
         this.settings = Object.assign(defaults, user[this.name]);
       } else {
@@ -29,11 +30,42 @@ module.exports = class Base {
     }
   }
 
+  writeFile(fileName, content) {
+    if (!fileName.match(global.settingsPath)) {
+      fileName = path.resolve(global.settingsPath, fileName);
+    }
+
+    try {
+      fs.ensureFileSync(fileName);
+      if (fileName.match('.json')) {
+        return fs.writeJSONSync(fileName, content, { spaces: 2 });
+      }
+      return fs.writeFileSync(fileName, content);
+    } catch (error) {
+      console.log(`error writing to file ${fileName}`);
+    }
+  }
+
+  readFile(fileName) {
+    if (!fileName.match(global.settingsPath)) {
+      fileName = path.resolve(global.settingsPath, fileName);
+    }
+    try {
+      fs.ensureFileSync(fileName);
+      if (fileName.match('.json')) {
+        return fs.readJSONSync(fileName);
+      }
+      return fs.readFileSync(fileName);
+    } catch (error) {
+      console.log(`error reading file ${fileName}`);
+    }
+  }
+
   saveSettings(settings) {
     const path = global.settings;
-    const settingsContent = fs.readJsonSync(path);
+    const settingsContent = this.readFile(path);
     settingsContent[this.name] = settings;
-    fs.writeJsonSync(path, settingsContent, { spaces: 2 });
+    this.writeFile(path, settingsContent);
   }
 
   get installable() {
