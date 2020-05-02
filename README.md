@@ -1,6 +1,6 @@
 # About
 
-Ninjakatt is a collection of useful plugins that you can run on your computer and make your digital life easier. This repository contains the main application that ties all the plugins together and allows them to communicate with eachother.
+Ninjakatt is a collection of useful plugins that you can run on your computer and make your digital life easier. This repository contains the main application that ties all the plugins together and allows them to communicate with each other.
 
 # Installing
 
@@ -94,6 +94,8 @@ npm install -g ninjakatt-plugin-qbittorrent
 npm install -g ninjakatt-plugin-webserver
 npm install -g ninjakatt-plugin-logger
 ```
+
+The webserver plugin serves ninjakatt on port 8585.
 
 Then edit your settings.json file (with [VS Code](https://code.visualstudio.com/)):
 
