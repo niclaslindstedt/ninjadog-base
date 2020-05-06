@@ -51,7 +51,9 @@ module.exports = class Base {
       fileName = path.resolve(global.settingsPath, fileName);
     }
     try {
-      fs.ensureFileSync(fileName);
+      if (!fs.existsSync(fileName)) {
+        return null;
+      }
       if (fileName.match('.json')) {
         return fs.readJSONSync(fileName);
       }
@@ -66,6 +68,30 @@ module.exports = class Base {
     const settingsContent = this.readFile(path);
     settingsContent[this.name] = settings;
     this.writeFile(path, settingsContent);
+  }
+
+  logMessage(message, type) {
+    global.emitter.emit('message', message, type, this.name);
+  }
+
+  logError(message) {
+    this.logMessage(message, 'error');
+  }
+
+  logWarn(message) {
+    this.logMessage(message, 'warn');
+  }
+
+  logInfo(message) {
+    this.logMessage(message, 'info');
+  }
+
+  logDebug(message) {
+    this.logMessage(message, 'debug');
+  }
+
+  logDiag(message) {
+    this.logMessage(message, 'diag');
   }
 
   get installable() {
