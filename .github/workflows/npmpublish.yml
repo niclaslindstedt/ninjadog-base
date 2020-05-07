@@ -9,6 +9,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v1
+      - uses:  'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix:  ''
       - uses: actions/setup-node@v1
         with:
           node-version: 12
