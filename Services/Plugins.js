@@ -10,7 +10,7 @@ module.exports = class PluginService extends EventEmitter {
     this._uninstalled = {};
 
     const userSettingsFile = global.settings;
-    fs.ensureFile(userSettingsFile, error => {
+    fs.ensureFile(userSettingsFile, (error) => {
       const settings = fs.readFileSync(userSettingsFile).toString();
       if (settings === '') {
         fs.writeJsonSync(userSettingsFile, {});
@@ -30,7 +30,7 @@ module.exports = class PluginService extends EventEmitter {
 
   async loadPlugins() {
     const plugins = await this.getPlugins();
-    plugins.forEach(name => {
+    plugins.forEach((name) => {
       const plugin = require(path.resolve(global.appRoot, '..', name));
       Object.appendChain(plugin.prototype, new BasePlugin());
       this._uninstalled[plugin.name] = plugin;
@@ -42,7 +42,7 @@ module.exports = class PluginService extends EventEmitter {
     return new Promise((resolve, reject) => {
       let plugins = fs.readdirSync(path.resolve(global.appRoot, '..'));
       plugins = plugins.filter(
-        pkg => pkg.match(/ninjakatt-plugin-/) && !pkg.match('base')
+        (pkg) => pkg.match(/ninjakatt-plugin-/) && !pkg.match('base')
       );
 
       return resolve(plugins);
@@ -50,7 +50,7 @@ module.exports = class PluginService extends EventEmitter {
   }
 
   installLoadedPlugins() {
-    Object.keys(this._uninstalled).forEach(plugin => {
+    Object.keys(this._uninstalled).forEach((plugin) => {
       this.install(this._uninstalled[plugin]);
     });
     this.emit('plugins.installed', this._installed);
@@ -67,6 +67,18 @@ module.exports = class PluginService extends EventEmitter {
     }
 
     instance.setup();
+
+    if (instance.subscriptionsExist) {
+      instance.subscriptions();
+    }
+
+    if (instance.routesExist) {
+      setTimeout(() => {
+        if (global.Ninjakatt.plugins.has('Webserver')) {
+          instance.routes();
+        }
+      }, 0);
+    }
 
     this._installed[Plugin.name] = instance;
     delete this._uninstalled[Plugin.name];

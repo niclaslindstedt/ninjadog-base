@@ -7,6 +7,13 @@ module.exports = class Base {
     this.name = path ? path.split('-').pop() : '';
     this.checkRequiredProperties();
     this.loadSettings();
+
+    if (typeof this.subscriptions === 'function') {
+      this.subscriptionsExist = true;
+    }
+    if (typeof this.routes === 'function') {
+      this.routesExist = true;
+    }
   }
 
   checkRequiredProperties() {
@@ -76,7 +83,7 @@ module.exports = class Base {
     const cleanPath = path.replace(/^(\/*)/, '').replace(/(\/*)$/, '');
     const route = `/${this.name.toLowerCase()}/${cleanPath.toLowerCase()}`;
     emitter.emit('webserver.add-route', method, route, callback);
-    this.logInfo(`Adding route ${method} ${route}`);
+    this.logDiag(`Adding route ${method} ${route}`);
   }
 
   emit(event, payload) {
