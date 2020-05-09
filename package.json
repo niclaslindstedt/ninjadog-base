@@ -1,6 +1,6 @@
 {
   "name": "ninjakatt",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "module": "main.js",
   "scripts": {
     "test": "echo \"No test specified\"",
