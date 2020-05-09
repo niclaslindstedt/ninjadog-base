@@ -70,11 +70,19 @@ module.exports = class Base {
     this.writeFile(path, settingsContent);
   }
 
+  route(method, path, callback) {
+    method = method.toLowerCase();
+    const cleanPath = path.replace(/^(\/*)/, '').replace(/(\/*)$/, '');
+    const route = `/${this.name.toLowerCase()}/${cleanPath.toLowerCase()}`;
+    emitter.emit('webserver.add-route', method, route, callback);
+    logInfo(`Adding route ${method} ${route}`);
+  }
+
   emit(event, payload) {
     global.emitter.emit(event, payload, 'event', this.name);
   }
 
-  register(event, callback) {
+  subscribe(event, callback) {
     global.emitter.register(event, callback, this.name);
   }
 
