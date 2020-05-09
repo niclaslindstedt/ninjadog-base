@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
+
 module.exports = class Base {
   construct(path) {
     this.path = path;
@@ -75,7 +76,7 @@ module.exports = class Base {
     const cleanPath = path.replace(/^(\/*)/, '').replace(/(\/*)$/, '');
     const route = `/${this.name.toLowerCase()}/${cleanPath.toLowerCase()}`;
     emitter.emit('webserver.add-route', method, route, callback);
-    logInfo(`Adding route ${method} ${route}`);
+    this.logInfo(`Adding route ${method} ${route}`);
   }
 
   emit(event, payload) {
