@@ -70,6 +70,14 @@ module.exports = class Base {
     this.writeFile(path, settingsContent);
   }
 
+  emit(event, payload) {
+    global.emitter.emit(event, payload, 'event', this.name);
+  }
+
+  register(event, callback) {
+    global.emitter.register(event, callback, this.name);
+  }
+
   logMessage(message, type) {
     global.emitter.emit('message', message, type, this.name);
   }
