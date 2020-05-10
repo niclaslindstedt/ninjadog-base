@@ -110,6 +110,14 @@ module.exports = class Base {
     this.logMessage(message, 'info');
   }
 
+  logRemoval(message) {
+    this.logMessage(message, 'removal')
+  }
+
+  logAddition(message) {
+    this.logMessage(message, 'addition');
+  }
+
   logDebug(message) {
     this.logMessage(message, 'debug');
   }
