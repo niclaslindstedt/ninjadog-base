@@ -42,7 +42,7 @@ module.exports = class PluginService extends EventEmitter {
     return new Promise((resolve, reject) => {
       let plugins = fs.readdirSync(path.resolve(global.appRoot, '..'));
       plugins = plugins.filter(
-        (pkg) => pkg.match(/ninjakatt-plugin-/) && !pkg.match('base')
+        (pkg) => pkg.match(/ninjadog-plugin-/) && !pkg.match('base')
       );
 
       return resolve(plugins);
@@ -74,7 +74,7 @@ module.exports = class PluginService extends EventEmitter {
 
     if (instance.routesExist) {
       setTimeout(() => {
-        if (global.Ninjakatt.plugins.has('Webserver')) {
+        if (global.Ninjadog.plugins.has('Webserver')) {
           instance.routes();
         }
       }, 0);

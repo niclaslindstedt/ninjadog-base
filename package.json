@@ -1,6 +1,7 @@
 {
-  "name": "ninjakatt",
-  "version": "1.2.12",
+  "name": "ninjadog",
+  "version": "1.0.0",
+  "description": "Event-driven microservice manager",
   "module": "main.js",
   "scripts": {
     "test": "echo \"No test specified\"",
@@ -8,14 +9,14 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "Joachim Lindström",
+  "author": "Niclas Lindstedt <nicl@slindstedt.se>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lindstrm/ninjakatt.git"
+    "url": "https://github.com/niclaslindstedt/ninjadog.git"
   },
-  "homepage": "https://github.com/lindstrm/ninjakatt",
+  "homepage": "https://github.com/niclaslindstedt/ninjadog",
   "bugs": {
-    "url": "https://github.com/lindstrm/ninjakatt/issues"
+    "url": "https://github.com/niclaslindstedt/ninjadog/issues"
   },
   "license": "ISC",
   "dependencies": {
@@ -27,9 +28,8 @@
   "devDependencies": {
     "nodemon": "^2.0.3"
   },
-  "description": "",
   "bin": {
-    "ninjakatt": "index.js"
+    "ninjadog": "index.js"
   },
   "preferGlobal": true
 }

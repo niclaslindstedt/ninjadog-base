@@ -2,7 +2,7 @@ const { emitter } = require('./lib');
 const PluginService = require('./Services/Plugins');
 const EventEmitter = require('events');
 
-module.exports = class Ninjakatt extends EventEmitter {
+module.exports = class Ninjadog extends EventEmitter {
   constructor() {
     super();
     this.registerGlobals();
@@ -10,11 +10,11 @@ module.exports = class Ninjakatt extends EventEmitter {
 
     const plugins = new PluginService();
 
-    plugins.on('plugins.loaded', loaded => {
+    plugins.on('plugins.loaded', (loaded) => {
       this.emit('plugins.loaded');
     });
 
-    plugins.on('plugins.installed', installed => {
+    plugins.on('plugins.installed', (installed) => {
       this.emit('ready');
     });
 

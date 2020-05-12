@@ -1,33 +1,33 @@
 # About
 
-Ninjakatt is a collection of useful plugins that you can run on your computer and make your digital life easier. This repository contains the main application that ties all the plugins together and allows them to communicate with each other.
+Ninjadog is a collection of useful plugins that you can run on your computer and make your digital life easier. This repository contains the main application that ties all the plugins together and allows them to communicate with each other.
 
 # Installing
 
 Open a PowerShell prompt as Administrator, and type:
 
 ```
-npm install -g ninjakatt
+npm install -g ninjadog
 ```
 
 # Running
 
 ```
-ninjakatt
+ninjadog
 ```
 
 # Restarting
 
-Simply press CTRL+C and start ninjakatt again if you're running it through a command prompt.
+Simply press CTRL+C and start ninjadog again if you're running it through a command prompt.
 
-If you are running ninjakatt as a service, you need to open the Task Manager, go to the Services tab, and right-click `ninjakatt.exe` and choose *Restart*.
+If you are running ninjadog as a service, you need to open the Task Manager, go to the Services tab, and right-click `ninjadog.exe` and choose _Restart_.
 
 # Installing service
 
-To install ninjakatt as a service, run:
+To install ninjadog as a service, run:
 
 ```
-ninjakatt service install
+ninjadog service install
 ```
 
 # Uninstalling
@@ -35,28 +35,28 @@ ninjakatt service install
 To do this, open PowerShell as Administrator and run:
 
 ```
-npm remove -g ninjakatt
+npm remove -g ninjadog
 ```
 
-If you're running ninjakatt as a service, you *first* need to remove the service:
+If you're running ninjadog as a service, you _first_ need to remove the service:
 
 ```
-sc delete ninjakatt
+sc delete ninjadog
 ```
 
 Then run the uninstall command above.
 
 # Configuration
 
-The ninjakatt configuration is stored in `%USERPROFILE%/AppData/Roaming/ninjakatt/settings.json`
+The ninjadog configuration is stored in `%USERPROFILE%/AppData/Roaming/ninjadog/settings.json`
 
-You might want to install some ninjakatt plugins before editing this file and running the program.
+You might want to install some ninjadog plugins before editing this file and running the program.
 
 You need to restart the program after changing the settings.
 
 # Plugins
 
-Install a plugin just like you installed ninjakatt:
+Install a plugin just like you installed ninjadog:
 
 ```
 npm install -g <plugin name>
@@ -64,49 +64,49 @@ npm install -g <plugin name>
 
 You need to restart the program after installing a plugin.
 
-Name | Description
---- | ---
-[ninjakatt-plugin-files](https://github.com/lindstrm/ninjakatt-plugin-files) | Watch file system for changes and trigger events
-[ninjakatt-plugin-logger](https://github.com/lindstrm/ninjakatt-plugin-logger) | Log events
-[ninjakatt-plugin-webserver](https://github.com/lindstrm/ninjakatt-plugin-webserver) | Allows access to ninjakatt through a web browser
-[ninjakatt-plugin-kodi](https://github.com/lindstrm/ninjakatt-plugin-kodi) | API for Kodi
-[ninjakatt-plugin-qbittorrent](https://github.com/lindstrm/ninjakatt-plugin-qbittorrent) | API for qBitTorrent
-[ninjakatt-plugin-torrentrss](https://github.com/lindstrm/ninjakatt-plugin-torrentrss) | Download torrent files through rss feeds
-[ninjakatt-plugin-epcheckr](https://github.com/lindstrm/ninjakatt-plugin-epcheckr) | API for epcheckr
+| Name                                                                                   | Description                                      |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| [ninjadog-plugin-files](https://github.com/lindstrm/ninjadog-plugin-files)             | Watch file system for changes and trigger events |
+| [ninjadog-plugin-logger](https://github.com/lindstrm/ninjadog-plugin-logger)           | Log events                                       |
+| [ninjadog-plugin-webserver](https://github.com/lindstrm/ninjadog-plugin-webserver)     | Allows access to ninjadog through a web browser  |
+| [ninjadog-plugin-kodi](https://github.com/lindstrm/ninjadog-plugin-kodi)               | API for Kodi                                     |
+| [ninjadog-plugin-qbittorrent](https://github.com/lindstrm/ninjadog-plugin-qbittorrent) | API for qBitTorrent                              |
+| [ninjadog-plugin-rssfeed](https://github.com/lindstrm/ninjadog-plugin-rssfeed)         | Download torrent files through rss feeds         |
+| [ninjadog-plugin-epcheckr](https://github.com/lindstrm/ninjadog-plugin-epcheckr)       | API for epcheckr                                 |
 
-\* Is installed by installing ninjakatt
+\* Is installed by installing ninjadog
 
 # Typical use case
 
-You want ninjakatt to:
+You want ninjadog to:
 
-* Download torrents through an RSS feed
-* Monitor a folder on your harddrive for torrent files (recursively) and add them to qBitTorrent when found
-* Be served through the web
-* Log events
+- Download torrents through an RSS feed
+- Monitor a folder on your harddrive for torrent files (recursively) and add them to qBitTorrent when found
+- Be served through the web
+- Log events
 
 To do this, run the following:
 
 ```
-npm install -g ninjakatt
-npm install -g ninjakatt-plugin-torrentrss
-npm install -g ninjakatt-plugin-qbittorrent
-npm install -g ninjakatt-plugin-webserver
-npm install -g ninjakatt-plugin-logger
+npm install -g ninjadog
+npm install -g ninjadog-plugin-rssfeed
+npm install -g ninjadog-plugin-qbittorrent
+npm install -g ninjadog-plugin-webserver
+npm install -g ninjadog-plugin-logger
 ```
 
-The webserver plugin serves ninjakatt on port 8585.
+The webserver plugin serves ninjadog on port 8585.
 
 Then edit your settings.json file (with [VS Code](https://code.visualstudio.com/)):
 
 ```
-code %USERPROFILE%/AppData/Roaming/ninjakatt/settings.json
+code %USERPROFILE%/AppData/Roaming/ninjadog/settings.json
 ```
 
-Then install ninjakatt as a service:
+Then install ninjadog as a service:
 
 ```
-ninjakatt service install
+ninjadog service install
 ```
 
 Et voilà!
