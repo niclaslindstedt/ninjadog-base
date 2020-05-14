@@ -31,7 +31,11 @@ module.exports = class PluginService extends EventEmitter {
   async loadPlugins() {
     const plugins = await this.getPlugins();
     plugins.forEach((name) => {
-      const plugin = require(path.resolve(global.appRoot, '..', name));
+      let pluginPath = path.resolve(global.appRoot, '..', name);
+      if (!fs.existsSync(pluginPath)) {
+        pluginPath = path.resolve(global.appRoot, '../plugins', name);
+      }
+      const plugin = require(pluginPath);
       Object.appendChain(plugin.prototype, new BasePlugin());
       this._uninstalled[plugin.name] = plugin;
     });
@@ -49,7 +53,7 @@ module.exports = class PluginService extends EventEmitter {
         path.resolve(global.appRoot, '../plugins')
       );
 
-      return resolve(plugins);
+      return resolve(plugins.concat(morePlugins));
     });
   }
 
