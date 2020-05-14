@@ -45,6 +45,10 @@ module.exports = class PluginService extends EventEmitter {
         (pkg) => pkg.match(/ninjadog-plugin-/) && !pkg.match('base')
       );
 
+      let morePlugins = fs.readdirSync(
+        path.resolve(global.appRoot, '../plugins')
+      );
+
       return resolve(plugins);
     });
   }
