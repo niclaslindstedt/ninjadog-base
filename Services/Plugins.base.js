@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
+const Console = require('../lib/console');
 
 module.exports = class Base {
   construct(path) {
@@ -34,7 +35,7 @@ module.exports = class Base {
       }
       this.saveSettings(this.settings);
     } catch (error) {
-      console.log(error);
+      Console.log(error);
     }
   }
 
@@ -50,7 +51,7 @@ module.exports = class Base {
       }
       return fs.writeFileSync(fileName, content);
     } catch (error) {
-      console.log(`error writing to file ${fileName}`);
+      Console.log(`error writing to file ${fileName}`);
     }
   }
 
@@ -67,7 +68,7 @@ module.exports = class Base {
       }
       return fs.readFileSync(fileName);
     } catch (error) {
-      console.log(`error reading file ${fileName}`);
+      Console.log(`error reading file ${fileName}`);
     }
   }
 
@@ -82,7 +83,7 @@ module.exports = class Base {
     method = method.toLowerCase();
     const cleanPath = path.replace(/^(\/*)/, '').replace(/(\/*)$/, '');
     const route = `/${this.name.toLowerCase()}/${cleanPath.toLowerCase()}`;
-    emitter.emit('webserver.add-route', method, route, callback);
+    global.emitter.emit('webserver.add-route', method, route, callback);
     this.logDiag(`Adding route ${method} ${route}`);
   }
 
@@ -92,6 +93,10 @@ module.exports = class Base {
 
   subscribe(event, callback) {
     global.emitter.register(event, callback, this.name);
+  }
+
+  logConsole(message, ...optionalParams) {
+    Console.log(message, ...optionalParams);
   }
 
   logMessage(message, type, color) {
@@ -111,7 +116,7 @@ module.exports = class Base {
   }
 
   logRemoval(message) {
-    this.logMessage(message, 'info', 'red')
+    this.logMessage(message, 'info', 'red');
   }
 
   logAddition(message) {

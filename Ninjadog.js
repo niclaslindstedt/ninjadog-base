@@ -10,11 +10,11 @@ module.exports = class Ninjadog extends EventEmitter {
 
     const plugins = new PluginService();
 
-    plugins.on('plugins.loaded', (loaded) => {
+    plugins.on('plugins.loaded', () => {
       this.emit('plugins.loaded');
     });
 
-    plugins.on('plugins.installed', (installed) => {
+    plugins.on('plugins.installed', () => {
       this.emit('ready');
     });
 

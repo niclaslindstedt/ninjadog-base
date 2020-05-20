@@ -10,7 +10,7 @@ module.exports = class PluginService extends EventEmitter {
     this._uninstalled = {};
 
     const userSettingsFile = global.settings;
-    fs.ensureFile(userSettingsFile, (error) => {
+    fs.ensureFile(userSettingsFile, () => {
       const settings = fs.readFileSync(userSettingsFile).toString();
       if (settings === '') {
         fs.writeJsonSync(userSettingsFile, {});
@@ -43,7 +43,7 @@ module.exports = class PluginService extends EventEmitter {
   }
 
   getPlugins() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       let plugins = fs.readdirSync(path.resolve(global.appRoot, '..'));
       plugins = plugins.filter(
         (pkg) => pkg.match(/ninjadog-plugin-/) && !pkg.match('base')
