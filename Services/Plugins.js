@@ -75,6 +75,7 @@ module.exports = class PluginService extends EventEmitter {
       return;
     }
 
+    instance.logDebug(`Setting up ${instance.name} plugin`);
     instance.setup();
 
     if (instance.subscriptionsExist) {
