@@ -99,36 +99,28 @@ module.exports = class Base {
     Console.log(message, ...optionalParams);
   }
 
-  logMessage(message, type, color) {
-    global.emitter.emit('message', message, type, this.name, color);
+  logMessage(message, type) {
+    global.emitter.emit('message', message, type, this.name);
   }
 
   logError(message) {
-    this.logMessage(message, 'error', 'red');
+    this.logMessage(message, 'error');
   }
 
   logWarn(message) {
-    this.logMessage(message, 'warn', 'orange');
+    this.logMessage(message, 'warn');
   }
 
   logInfo(message) {
-    this.logMessage(message, 'info', 'cyan');
-  }
-
-  logRemoval(message) {
-    this.logMessage(message, 'info', 'red');
-  }
-
-  logAddition(message) {
-    this.logMessage(message, 'info', 'green');
+    this.logMessage(message, 'info');
   }
 
   logDebug(message) {
-    this.logMessage(message, 'debug', 'white');
+    this.logMessage(message, 'debug');
   }
 
   logDiag(message) {
-    this.logMessage(message, 'diag', 'grey');
+    this.logMessage(message, 'diag');
   }
 
   get installable() {
