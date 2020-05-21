@@ -101,7 +101,7 @@ module.exports = class Base {
   }
 
   logMessage(message, type) {
-    global.emitter.emit('message', message, type, this.name);
+    global.emitter.emit('log', message, type, this.name);
   }
 
   logError(message) {

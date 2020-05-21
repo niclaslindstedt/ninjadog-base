@@ -68,9 +68,9 @@ You need to restart the program after installing a plugin.
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | [ninjadog-plugin-logger](https://github.com/niclaslindstedt/ninjadog-plugin-logger)\*       | Log events to webserver and filesystem           |
 | [ninjadog-plugin-webserver](https://github.com/niclaslindstedt/ninjadog-plugin-webserver)\* | Web UI for Ninjadog                              |
-| [ninjadog-plugin-qbittorrent](https://github.com/niclaslindstedt/ninjadog-plugin-qb)        | Access qbittorrent                               |
-| [ninjadog-plugin-files](https://github.com/niclaslindstedt/ninjadog-plugin-qbfilemon)       | Monitor file system and add tnt files to qb      |
-| [ninjadog-plugin-rssfeed](https://github.com/niclaslindstedt/ninjadog-plugin-rssreader)     | Download tnt files using rss feeds               |
+| [ninjadog-plugin-qb](https://github.com/niclaslindstedt/ninjadog-plugin-qb)                 | Access qbittorrent                               |
+| [ninjadog-plugin-qbfilemon](https://github.com/niclaslindstedt/ninjadog-plugin-qbfilemon)   | Monitor file system and add tnt files to qb      |
+| [ninjadog-plugin-rssreader](https://github.com/niclaslindstedt/ninjadog-plugin-rssreader)   | Download tnt files using rss feeds               |
 
 \* Is installed by installing Ninjadog
 
@@ -81,7 +81,7 @@ You want Ninjadog to:
 - Be served through the web
 - Log events
 - Download torrents through an RSS feed
-- Monitor a folder on your harddrive for torrent files (recursively) and add them to qBitTorrent when found
+- Monitor a folder on your harddrive for torrent files (recursively) and add them to qbittorrent when found
 
 To do this, run the following:
 

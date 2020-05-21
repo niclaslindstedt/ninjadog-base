@@ -15,6 +15,7 @@ const exec = require('child_process').exec;
 global.appRoot = path.resolve(__dirname);
 global.settingsPath = getSettingsPath();
 global.settings = path.resolve(global.settingsPath, 'settings.json');
+Console.log(`Using settings file: ${global.settings}`);
 
 const Ninjadog = require('./Ninjadog');
 const ninjadog = new Ninjadog();
