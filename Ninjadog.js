@@ -3,6 +3,7 @@ const PluginService = require('./Services/Plugins');
 const EventEmitter = require('events');
 
 module.exports = class Ninjadog extends EventEmitter {
+
   constructor() {
     super();
     this.registerGlobals();
@@ -28,4 +29,5 @@ module.exports = class Ninjadog extends EventEmitter {
   registerGlobals() {
     global.emitter = emitter;
   }
+
 };

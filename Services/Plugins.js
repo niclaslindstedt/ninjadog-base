@@ -4,6 +4,7 @@ const EventEmitter = require('events');
 const BasePlugin = require('./Plugins.base');
 
 module.exports = class PluginService extends EventEmitter {
+
   constructor() {
     super();
     this._installed = {};
@@ -91,4 +92,5 @@ module.exports = class PluginService extends EventEmitter {
     this._installed[Plugin.name] = instance;
     delete this._uninstalled[Plugin.name];
   }
+
 };

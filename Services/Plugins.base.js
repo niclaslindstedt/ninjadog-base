@@ -3,9 +3,10 @@ const path = require('path');
 const Console = require('../lib/console');
 
 module.exports = class Base {
+
   construct(path) {
     this.path = path;
-    this.name = path ? path.split('-').pop() : '';
+    this.name = path ? path.split('-').pop().split('/').pop().split('\\').pop() : '';
     this.checkRequiredProperties();
     this.loadSettings();
 
@@ -130,4 +131,5 @@ module.exports = class Base {
     }
     return installable;
   }
+
 };
